@@ -1,10 +1,18 @@
-<h1>Editing friend</h1>
-
-<%= render "form", friend: @friend %>
-<br>
-<div>
-  <%= link_to "Show", @friend, class:"btn btn-primary" %> |
-  <%= link_to "Back", friends_path , class:"btn btn-dark"%> |
-  <%= link_to 'delete', @friend ,
-             data: {turbo_method: :delete, turbo_confirm: :"Are You Sure?"} ,class:"btn btn-outline-danger "%>
+<div class="container mt-5">
+  
+  <div class="card text-center">
+    <div class="card-header">
+      Editing Friend
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Edit Friend details </h5>
+      <p class="card-text"> <%= render "form", friend: @friend %></p>
+      <div class="row justify-content-center">
+        <%= link_to "Show", @friend, class:"btn btn-primary" %> |
+        <%= link_to "Back", friends_path , class:"btn btn-dark"%> |
+        <%= link_to 'delete', @friend ,
+                   data: {turbo_method: :delete, turbo_confirm: :"Are You Sure?"} ,class:"btn btn-outline-danger "%>
+      </div>
+    </div>
+  </div>
 </div>
