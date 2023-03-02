@@ -20,21 +20,19 @@ class FriendsController < ApplicationController
 
   end
 
-  # GET /friends/1/edit
-  def edit
-
-  end
 
   # POST /friends or /friends.json
   def create
     # @friend = Friend.new(friend_params)
-    @friend = current_user.friends.build(friend_params)
 
+    @friend = current_user.friends.build(friend_params)
+    
     respond_to do |format|
       if @friend.save
+        FriendCleanupJob.set(wait: 20.seconds).perform_later(@friend)
         format.html { redirect_to friend_url(@friend), notice: "Friend was successfully created." }
         format.json { render :show, status: :created, location: @friend }
-        CrudNotificationMailer.create_notification(@friend).deliver_now
+        
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @friend.errors, status: :unprocessable_entity }
@@ -46,12 +44,17 @@ class FriendsController < ApplicationController
    return unless profile_image.attached?
   end
 
+  # GET /friends/1/edit
+  def edit
+
+  end
 
   # PATCH/PUT /friends/1 or /friends/1.json
   def update
     respond_to do |format|
       if @friend.update(friend_params)
-      CrudNotificationMailer.update_notification(@friend).deliver_now
+        FriendCleanupJob.set(wait: 5.seconds).perform_later(@friend)
+      # CrudNotificationMailer.update_notification(@friend).deliver_now
 
         format.html { redirect_to friend_url(@friend), notice: "Friend was successfully updated." }
         format.json { render :show, status: :ok, location: @friend }
@@ -65,9 +68,10 @@ class FriendsController < ApplicationController
   # DELETE /friends/1 or /friends/1.json
   def destroy
     CrudNotificationMailer.delete_notification(@friend).deliver_now
-
     @friend = Friend.find(params[:id])
     @friend.destroy
+    FriendCleanupJob.set(wait: 5.seconds).perform_later(@friend)
+
 
     respond_to do |format|
       format.html { redirect_to friends_url, notice: "Friend was successfully destroyed." }

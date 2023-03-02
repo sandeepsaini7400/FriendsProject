@@ -1,23 +1,22 @@
-.navbar{
+#nav-bar{
+  position: sticky;
+  top: 0;
+  z-index: 10;
   background-color:mediumpurple ;
+  font-weight: 60px;
+  padding: 12px;
+
 }
+
 .header-front{
     position: relative;
     margin-top: 50px;
   border: 1px solid white;
   margin-bottom: 100px;
-
 }
-.nav-link:hover{
-    box-shadow: 3px 1px 2px 0px rgba(0,255,255,0.7);
-    box-shadow: 1px 2px 4px 0px rgba(0,255,255,0.7);
-    box-shadow: 2px 4px 8px 0px rgba(0,255,255,0.7);
-    box-shadow: 3px 4px 16px 0px rgba(0,255,255,0.7);
+.as{
+  margin-left: 20px;
 }
-
-.img-logo{
-  margin-right: 20px;
-  width: 150px;
 }
 .front-portion-img{
   width: 400px;
@@ -108,8 +107,6 @@ button{
    background-image: url('moon-night-desert-4k-8i.jpg');
   background-repeat: no-repeat;
   background-size: cover;
-  width: 400px;
-
 }
 .card-header123{
   margin: 30px;
@@ -120,4 +117,82 @@ button{
   margin-bottom: 40px;
   font-family:system-ui;;
   font-weight:bolder;
+}
+/*----------------Banner section----------------------*/
+.email-text{
+  color: black;
+}
+
+#banner{
+  background-image: liner-gradient(to right, #a517ba,#5f1782);
+}
+.promo-title{
+  font-weight: 600;
+  font-size: 40px;
+  margin-top: 100px;
+}
+
+/*--------------------------------------dropdown for signout --------------------------*/
+
+.image-dropdown{
+  position: relative;
+  display: inline-block;
+  margin-right: 35px;
+  margin-top: 8px;
+  margin-bottom: 10px;
+}
+
+.dropdown-data{
+  display: none;
+  position: absolute;
+  min-width: 200px;
+  right: 0;  
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  color: white;
+  font-weight: 20px;
+  z-index: 1;
+  float: right;
+  border-radius: 10px;
+  background-color: whitesmoke;
+
+
+}
+
+.sign-out-link{
+  padding: 16px;
+  font-size: 16px;
+}
+
+.dropdown-data li{
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+/*  display: block;*/
+  left: 20px;
+}
+
+.dropdown-data li:hover{
+
+}
+
+.image-dropdown:hover .dropdown-data{
+display: block;
+
+}
+
+.image-dropdown:hover .sign-out-link{
+  background-color: #red;
+}
+
+.image-signout{
+  border-radius: 25px;
+
+}
+.image-signout1{
+  border-radius: 25px;
+  
+}
+.im{
+  padding-left:30px;
+  padding-top: 10pxa;
 }

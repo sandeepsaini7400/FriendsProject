@@ -25,3 +25,4 @@ class CrudNotificationMailer < ApplicationMailer
     #{object.class} has been Updated"
   end
 end
+

@@ -50,7 +50,7 @@ gem "image_processing", "~> 1.2"
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
-  #this gem for letter opening gem 
+  #this gem for letter opening gem for mailer 
   gem "letter_opener"
 end
 
@@ -82,3 +82,5 @@ end
 #this gem for bootstrap form control
 gem "bootstrap_form", "~> 5.1"
 
+#this gem for active job for background processing
+# gem 'sidekiq'
