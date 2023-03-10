@@ -1,8 +1,16 @@
-    <%= stylesheet_link_tag "custom", "sdata-turbo-track": "reload" %>
+<%= stylesheet_link_tag "custom", "sdata-turbo-track": "reload" %>
 <body class="index-page">
   <% if user_signed_in? %>
     <div class="container">
-    <h1>Friends List</h1>
+      <div class="row">
+        <div class="col">
+          <div class="header-front">
+            <div class="head-title">A <span class="ht">Friend</span> is a person with whom you share a close, supportive relationship.
+            <%= image_tag "first.png", class:"front-portion-img img-rounded",alt:"Responsive image" %></div>
+            </div>
+          </div>
+        </div>
+      <h1>Friends List</h1>
       <div class="table-responsive ">  
         <table class="table table-bordered  table-striped table-hover">
           <thead class="thead-dark">
@@ -18,25 +26,25 @@
           <tbody>
             <% @friends.each do |friend|  %>
               <% if friend.user == current_user %>
-              <tr>
-                <td><%= link_to friend.first_name + ' '+ friend.last_name, friend %>
-                </td>
-                <td><%= friend.email %></td>
-                <td><%= friend.phone %></td>
-                <td><%= friend.twitter %></td>
-                <td><%= friend.instagram %></td>
-                <td><%= link_to 'destroy', friend_path(friend),
-                 data: {turbo_method: :delete, turbo_confirm: :"Are You Sure?"} ,class:"btn btn-outline-danger btn-sm"%></td>
-              </tr>
+                <tr>
+                  <td><%= link_to friend.first_name + ' '+ friend.last_name, friend,class:"table-data1" %>
+                  </td>
+                  <td><%= friend.email %></td>
+                  <td><%= friend.phone %></td>
+                  <td><%= friend.twitter %></td>
+                  <td><%= friend.instagram %></td>
+                  <td><%= link_to 'destroy', friend_path(friend),
+                   data: {turbo_method: :delete, turbo_confirm: :"Are You Sure?"} ,class:"btn btn-outline-danger btn-sm"%></td>
+                </tr>
               <% end %>
             <% end %>
           </tbody>
         </table>
-      </div>
+        <%= paginate @friends%>
+        </div>
       </div>
     </div>
   <% else %>
     <%= render 'home/front' %>
   <% end %>
-  <button> </button>
- </body>
+</body>

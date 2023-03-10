@@ -1,1 +1,13 @@
-<h5><%= @user.email%></h5>
+
+<table class="table table-bordered  table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @user.friends.each do|friend| %>
+      <tr><td><%= friend.first_name%></td></tr>  
+    <% end %>
+  </tbody>
+</table>

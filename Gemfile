@@ -82,5 +82,12 @@ end
 #this gem for bootstrap form control
 gem "bootstrap_form", "~> 5.1"
 
-#this gem for active job for background processing
-# gem 'sidekiq'
+#this gem for  creating deffrence kinds of roles and asingning  to  users or admin to handle own processing
+gem "rolify"
+
+#this gem for define abilities and access to users with different kinds of roles
+gem "cancan"
+
+#THIS GEM FOR PAGINATION FOR VIEW THE LIST IN 10-10
+gem 'kaminari'
+

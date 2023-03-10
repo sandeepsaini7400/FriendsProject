@@ -2,14 +2,15 @@ class FriendsController < ApplicationController
   before_action :set_friend, only: [ :show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
   before_action :correct_user, only: [:edit, :update, :destroy]
+  
 
   # GET /friends or /friends.json
   def index
-    @friends = Friend.all
+    @friends = Friend.all.page(params[:page])
   end
 
   # GET /friends/1 or /friends/1.json
-  def show
+  def show  
 
   end
 
@@ -29,6 +30,7 @@ class FriendsController < ApplicationController
     
     respond_to do |format|
       if @friend.save
+        current_user.add_role :creater,@friend
         FriendCleanupJob.set(wait: 20.seconds).perform_later(@friend)
         format.html { redirect_to friend_url(@friend), notice: "Friend was successfully created." }
         format.json { render :show, status: :created, location: @friend }
@@ -53,6 +55,7 @@ class FriendsController < ApplicationController
   def update
     respond_to do |format|
       if @friend.update(friend_params)
+         current_user.add_role :editor,@friend
         FriendCleanupJob.set(wait: 5.seconds).perform_later(@friend)
       # CrudNotificationMailer.update_notification(@friend).deliver_now
 

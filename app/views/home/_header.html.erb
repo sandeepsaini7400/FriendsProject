@@ -1,9 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-dark" id="nav-bar">
-     <%= link_to root_path do %>
-     <%= image_tag( "logois.png" , height: '50', width: '150',class: 'as') %>
-     <% end %>
+    <%= link_to root_path do %>
+    <%= image_tag( "logois.png" , height: '50', width: '150',class: 'as') %>
+    <% end %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+    <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -14,31 +14,41 @@
           <%= link_to "about us ",home_about_path, class:"nav-link btn text-white" %>
         </li>
         </li> 
-        <% if user_signed_in? %>
-             
+        <% if user_signed_in? %> 
+
           <li class="nav-item">
             <%= link_to "Add friends ",new_friend_path, class:"nav-link btn text-white" %></li>
 
             <li class="nav-item">  
-              <%= link_to "Edit Profile", edit_user_registration_path, class:"nav-link  btn text-white" %>
+              <%= link_to "Edit Profile",edit_user_registration_path, class:"nav-link  btn text-white" %>
             </li>  
           </ul>
 
           <div class="image-dropdown">
-              <%= image_tag( "icons122.png") %>
-              <%= image_tag( "client.jpg", width: '40',class: ' image-signout') %>
+            <i class="bi bi-chevron-down"></i>
+            <%= image_tag( "client.jpg", width: '40',class: ' image-signout') %>
 
-              <div class="dropdown-data " style="float:right;">
-                <ul class="">
-            <div class="im"><%= image_tag( "client.jpg", width: '45',class: 'm-2 image-signout1') %></div>
+
+              <div class="dropdown-data text-center " style="float:right;">
+                <ul>
+            <div class="im">
+              <%#= image_tag( "client.jpg", width: '45',class: 'm-2 image-signout1') %>
+              <% if current_user.profile_image.attached? %>
+                <%= image_tag (current_user.profile_image style:"width:20px")%>
+              <% end %>
+            </div>
                 </ul>
-                <li class=" image-sign-out ml-auto ">   
-                <%= link_to "Sign Out ",destroy_user_session_path, data: {turbo_method: :delete, turbo_confirm: :"Are you sure You want to log out "}  , class:"nav-link btn btn-outline-danger  sign-out-link" %>
-                </li>
+                <div class="data">
+                <li><%= current_user.email%></li> 
+                <li><%#= link_to " show", users_path %></li>
+                <li><%= link_to " show", user_path(current_user.id) %></li>
+                  
+                </div>
+                <div class=" image-sign-out ml-auto ">   
+                <%= link_to "Sign Out ",destroy_user_session_path, data: {turbo_method: :delete, turbo_confirm: :"Are you sure You want to log out "}  , class:" btn btn-outline-danger " %>
+                </div>
               </div>
           </div>
-
-         
         <% else %>
           <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
             <li class="nav-item">
