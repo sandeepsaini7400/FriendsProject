@@ -86,8 +86,13 @@ gem "bootstrap_form", "~> 5.1"
 gem "rolify"
 
 #this gem for define abilities and access to users with different kinds of roles
-gem "cancan"
+gem "cancancan"
 
 #THIS GEM FOR PAGINATION FOR VIEW THE LIST IN 10-10
 gem 'kaminari'
 
+#This gem for searching the element on our website
+gem 'ransack'
+ 
+#this gem for image uploading and handling file attachement 
+gem 'shrine', '~> 3.3'

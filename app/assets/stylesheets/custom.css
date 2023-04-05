@@ -201,4 +201,62 @@ display: block;
 .image-signout1{
   border-radius: 25px;
 }
+.offcanvas-body{
+  position: relative;
+
+}
+.offcanvas-cont{
+  position: absolute;
+  bottom: 10px;
+  font-weight: 10px;
+  font-size: 25px;
+}
+
+
+
+/*post -----------------------------------------------------------------------*/
+
+.posts{
+  margin: 50px 200px 10px;
+ box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+
+}
+
+.post{
+  border: 1px solid #efefef;
+  border-radius: 3px;
+  margin-bottom: 10px;
+
+}
+.user{
+  border: 1px solid #efefef;
+  display: flex;
+}
+.username{
+  padding-top: 13px;
+  color: #262626;
+  font-size: 14px;
+  font-weight: 600;
+  position: absolute;
+  top: 4px;
+  left: 72px;
+}
+.main-image{
+  width: 400px;
+  border-bottom: 1px solid #f4f4f4;
+
+}
+.description{
+  padding: 20px;
+}
+
+.friend{
+  position: relative;
+  top: 0px;
+  padding: 12px;
+}
+.avatar{
+  position: relative;
+  left: 0px;
+}
 

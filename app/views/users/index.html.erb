@@ -1,10 +1,42 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
-<% @users.each do |user| %>
-  <% if current_user.has_role? :admin %>
-    <%= link_to  user.email, user_path(user) %><br/>
-    <%#= user.roles.pluck(:name) %>
-    <br/>
-    <%= link_to 'Edit user', edit_user_path(user)%><br>
-  <% end %>
-<% end %>
+<div class=""> 
+
+  <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Scrolling</button>
+
+<div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Backdrop with scrolling</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <p>Try scrolling the rest of the page to see this option in action.</p>
+  </div>
+</div>
+
+  <h3>Users List</h3>
+  <table class="table table-bordered  table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Edit</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <% if current_user.has_role? :admin %>
+            <td><%= link_to  user.email, user_path(user) %></td>
+            <td><%= link_to 'Edit user', edit_user_path(user)%></td>
+          <% end %>
+        </tr>  
+          <%#= user.roles.pluck(:name) %>
+      <% end %>
+    </tbody>
+  </table>
+   <%= paginate @users %>
+</div>
+
+<div>
+  
+  <%#   = image_tag @user.image %>
+  
+</div>

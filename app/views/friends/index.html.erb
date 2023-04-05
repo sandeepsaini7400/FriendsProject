@@ -1,7 +1,31 @@
-<%= stylesheet_link_tag "custom", "sdata-turbo-track": "reload" %>
 <body class="index-page">
+  <section class="offcanva">
+  <%= link_to "Search Friend", "#offcanvasExample", data: { bs_toggle: "offcanvas" }, area: {controls: "offcanvasExample" }, role: "button", class: "btn btn-primary " %>
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Search Friends</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div class="container">
+        <%= search_form_for @q, url: :friends do |f|%>
+        <div class="form-group">
+          <%= f.label :first_name_cont , class: "form-label" %>
+          <%= f.search_field :first_name_cont , class: "form-control" %>
+        </div>
+        <div class="form-group mt-3">
+          <%= f.submit 'Search Friend', class:"btn btn-primary" %>
+        </div>
+        <% end %>
+      </div>
+      <div class="offcanvas-cont">
+        dvhwd
+      </div>
+    </div>
+  </div>
+</section>
+
   <% if user_signed_in? %>
-    <div class="container">
       <div class="row">
         <div class="col">
           <div class="header-front">
@@ -26,6 +50,7 @@
           <tbody>
             <% @friends.each do |friend|  %>
               <% if friend.user == current_user %>
+
                 <tr>
                   <td><%= link_to friend.first_name + ' '+ friend.last_name, friend,class:"table-data1" %>
                   </td>

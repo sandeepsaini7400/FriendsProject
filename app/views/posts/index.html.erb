@@ -1,0 +1,26 @@
+<% @posts.each do |post| %>
+  <div class="posts">
+    <section>
+      <div class="post">
+      <div class="friend">
+        <div class="username">
+          <h4><%= post.friend.first_name%></h4> 
+        </div>
+        <div class="avatar">
+          <%= image_tag( "client.jpg", width: '40',class: ' image-signout') %>
+        </div>
+      </div>
+      <div class="post-image ">
+        <%if post.profile_image.persisted?%>
+          <%= image_tag(post.profile_image, class: "main-image")  %>
+        <% end %> 
+      </div>  
+      <div class="description">
+        <%= post.description %>
+      </div>
+      </div>
+    </section>
+</div>
+<% end %>
+
+<%= render 'form' , post: @post%>
